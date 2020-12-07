@@ -13,12 +13,13 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 """
-This Script is intended to easily join Zoomcalls and do other stuff in future based on speech recognition.
+This Script is intended to easily join Zoomcalls and do other stuff in future based on speech recognition. It is designed to be used on 
+Debian like operating systems but can be adapted to other OSs by changing the <open_zoom> function.
 """
 
 import speech_recognition as sr
 import os
-
+#The following variable Definition contain explicit links. They should later be stored in extra files, customizable by the user.
 # This is a dummy to later be replaced in the list all_lecs
 lec_dummy = "giybf.com/"
 ex_dummy = "www.physik.uni-wuerzburg.de/studium/studienorganisation/pruefungstermine/"
@@ -41,9 +42,9 @@ def find_subj(text):
 			if key_word in text:
 				subject = uni_module[0]
 	return subject
-""" Um sicherzugehen, werden wir nur, wenn tatsächlich lecture oder exercise gefordert ist, 
-	einen Zoom link öffnen."""
 
+""" To be sure, we only open zoom, if the request contains keywords for lecture or exercise. 
+	Therefore we check what event is requested with the following function."""
 def lec_or_exercise(text):
 	type_of_event = "unknown"
 	for key_word in exercise:
@@ -56,6 +57,9 @@ def lec_or_exercise(text):
 			break
 	return type_of_event
 
+""" This function gets the subject name and event_type ('lecture' or 'exercise') 
+	as input strings and then opens the corresponding link in firefox. Maybe I'll change this to open zoom directly later. 
+	If you are using Windows you'll have to change this function to your needs."""
 def open_zoom(subject, event_type):
 	did = False
 	for element in all_lecs:
