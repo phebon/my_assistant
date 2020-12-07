@@ -18,6 +18,7 @@ Debian like operating systems but can be adapted to other OSs by changing the <o
 """
 
 import speech_recognition as sr
+from additional_data import *
 import os
 #The following variable Definition contain explicit links. They should later be stored in extra files, customizable by the user.
 # This is a dummy to later be replaced in the list all_lecs
@@ -27,11 +28,12 @@ ex_dummy = "www.physik.uni-wuerzburg.de/studium/studienorganisation/pruefungster
 exercise = ["exercise", "examples", "tutorium"]
 lecture = ["lecture", "lectures", "lesson"]
 """In the following lists, the first entry fenotes the subject. The second is some keywords. The third is the lecture link,
-fourth is exercise link."""
+	fourth is exercise link. For testing purposes replace the imported links 
+	such as fk_lec_link which are defined in additional_data.py by the dummy links above."""
 statmech = ["Statistical Mechanics",["statistical", "mechanic", "mechanics", "statistic", "statistics"],
-lec_dummy,ex_dummy]
-fk = ["Festkörperphysik",["solid", "state", "states", "crystall", "solids"],lec_dummy,ex_dummy]
-ket = ["Kern und Elementarteilchen",["elementary","particles", "nuclear", "core"],lec_dummy,ex_dummy]
+statmech_lec_link,statmech_ex_link]
+fk = ["Festkörperphysik",["solid", "state", "states", "crystall", "solids"],fk_lec_link,fk_ex_link]
+ket = ["Kern und Elementarteilchen",["elementary","particles", "nuclear", "core"],ket_lec_link,ket_ex_link]
 ap3 = ["Labor und Messtechnik",["measurement","measure", "labview", "lab"],lec_dummy,ex_dummy]
 all_lecs = [statmech, fk, ket,ap3]
 """Definiere ein paar nützliche Funktionen:"""
