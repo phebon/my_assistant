@@ -6,8 +6,8 @@ I personally integrate it in my workflow with a keyboardshortcut.
 ## requirements
 You need to install following modules:
 
-*pyaudio
-*SpeechRecognition
+* pyaudio
+* SpeechRecognition
 
 More packages might be needed, see the tutorial linked below.
 ## Referenced Tutorial
