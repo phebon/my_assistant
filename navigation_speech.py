@@ -35,7 +35,8 @@ statmech_lec_link,statmech_ex_link]
 fk = ["Festkörperphysik",["solid", "state", "states", "crystall", "solids"],fk_lec_link,fk_ex_link]
 ket = ["Kern und Elementarteilchen",["elementary","particles", "nuclear", "core"],ket_lec_link,ket_ex_link]
 ap3 = ["Labor und Messtechnik",["measurement","measure", "labview", "lab"],lec_dummy,ex_dummy]
-all_lecs = [statmech, fk, ket,ap3]
+standard = ["Worksheet Wahnsinn",["worksheet","standard", "routine", "worksheets"],standard_meeting]
+all_lecs = [statmech, fk, ket,ap3, standard]
 """Definiere ein paar nützliche Funktionen:"""
 def find_subj(text):
 	subject = "No Subject found"
@@ -57,6 +58,8 @@ def lec_or_exercise(text):
 		if key_word in text:
 			type_of_event = "lecture"
 			break
+	if find_subj(text)=="Worksheet Wahnsinn":
+		type_of_event = "standard_meeting"
 	return type_of_event
 
 """ This function gets the subject name and event_type ('lecture' or 'exercise') 
@@ -73,6 +76,8 @@ def open_zoom(subject, event_type):
 			elif event_type == "exercise":
 				os.system(f'firefox {element[3]}')
 				did = True
+			elif event_type == "standard_meeting":
+				os.system(f'firefox {element[-1]}')
 			#Place a firefox or zoom call here! 
 	if not did: print("nothing matched the subjects looked up by the <open_zoom> function ")
 
